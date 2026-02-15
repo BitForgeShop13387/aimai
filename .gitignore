@@ -1,1 +1,49 @@
-# ... (sadržaj iz koraka 1 iznad) ...
+# === Python ===
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.dist-info/
+*.egg
+build/
+env/
+venv/
+.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+
+# === Jupyter ===
+.ipynb_checkpoints/
+*.ipynb
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === Data ===
+data/raw/*.csv
+data/processed/*.csv
+data/external/*.csv
+
+# === Models ===
+models/saved/*.pt
+models/checkpoints/*.ckpt
+models/logs/
+
+# === Environment ===
+# Precizna pravila: ignoriši SAMO .env, dozvoli .env.example
+.env
+!.env.example
+.env.local
+
+# === Marimo ===
+marimo/_static/
+marimo/_lsp/
+__marimo__/
+
+# === Other ===
+*.DS_Store
+*.tmp
+*.log
