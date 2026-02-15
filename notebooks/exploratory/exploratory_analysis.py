@@ -1,6 +1,6 @@
 """
 Exploratory Data Analysis - AIMAI Project
-Author: Your Name
+Author: Mirnes
 Date: 2026-02-15
 """
 
@@ -31,6 +31,25 @@ def main():
     print(df.info())
     print("\n📈 Opis statistike:")
     print(df.describe())
+    
+    # ===== DODAJ OVO ISPOD =====
+    print("\n🎨 Kreiram vizuelizaciju...")
+    plt.figure(figsize=(12, 5))
+    
+    # Scatter plot
+    plt.subplot(1, 2, 1)
+    sns.scatterplot(data=df, x='feature1', y='feature2', hue='target', palette='viridis')
+    plt.title('Feature1 vs Feature2 po Targetu')
+    
+    # Distribution plot
+    plt.subplot(1, 2, 2)
+    sns.histplot(data=df, x='feature1', hue='target', multiple='stack', bins=20)
+    plt.title('Distribucija Feature1')
+    
+    plt.tight_layout()
+    plt.savefig('notebooks/exploratory/analysis_plot.png')
+    print("✅ Vizuelizacija sačuvana u notebooks/exploratory/analysis_plot.png")
+    # ===== KRAJ DODATKA =====
     
     print("\n✅ Analiza završena!")
 
