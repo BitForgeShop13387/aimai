@@ -33,7 +33,7 @@ models/checkpoints/*.ckpt
 models/logs/
 
 # === Environment ===
-# Precizna pravila: ignoriši SAMO .env, dozvoli .env.example
+# Precizna pravila: blokiraj SAMO .env, dozvoli .env.example
 .env
 !.env.example
 .env.local
