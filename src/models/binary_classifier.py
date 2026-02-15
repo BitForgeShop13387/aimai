@@ -11,6 +11,7 @@ import numpy as np
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
+import os
 
 class BinaryClassifier(nn.Module):
     def __init__(self, input_dim=10, hidden_dim=16):
@@ -103,4 +104,22 @@ if __name__ == "__main__":
     print(f"Verovatnoća klase 1: {prob:.4f}")
     print(f"Predikcija: Klasa {pred_class}")
     
-    print("\n🎉 Trening završen uspešno!")
+    # ✅ DODATO: Čuvanje modela na disk
+    print("\n💾 Čuvanje modela na disk...")
+    os.makedirs("models/saved", exist_ok=True)
+    torch.save(model.state_dict(), "models/saved/binary_classifier.pth")
+    print("✅ Model uspešno sačuvan u models/saved/binary_classifier.pth")
+    
+    # Kreiraj checkpoint sa metapodacima
+    checkpoint = {
+        'model_state_dict': model.state_dict(),
+        'input_dim': X_train.shape[1],
+        'hidden_dim': 16,
+        'epoch': 100,
+        'accuracy': accuracy_score(y_test, y_pred),
+        'loss': nn.BCELoss()(torch.tensor(y_pred_proba, dtype=torch.float32), torch.tensor(y_test, dtype=torch.float32)).item()
+    }
+    torch.save(checkpoint, "models/saved/binary_classifier_checkpoint.pth")
+    print("✅ Checkpoint sačuvan u models/saved/binary_classifier_checkpoint.pth")
+    
+    print("\n🎉 Trening i čuvanje završeni uspešno!")
